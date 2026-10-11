@@ -175,7 +175,7 @@
         <div class="eyebrow">Pick a level</div>
         <h1>Levels</h1>
         <div class="shopgrid" id="lvlGrid"></div>
-        <p>All levels are open. Start with 3 lives. Coins only count once you clear the level. Run out of lives and you drop back a level. Every 10th level is a boss.</p>
+        <p>Clear a level to unlock the next one. Start with 3 lives. Coins only count once you clear the level. Run out of lives and you drop back a level. Every 10th level is a boss.</p>
         <button id="lvlBack" class="ghost" type="button">Back</button>
       </div>
       <div class="card" id="shopCard" hidden>
@@ -1554,7 +1554,7 @@
 
   // ---- level select, results ----
   function starsText(n) { var s = ''; for (var i = 0; i < 3; i++) s += i < n ? '★' : '☆'; return s; }
-  function isUnlocked(n) { return true; } // every level is open from the start
+  function isUnlocked(n) { return n === 1 || levelStars[n - 2] > 0; } // level 1 is open; each other level opens when the one before it has been cleared
 
   function renderLevels() {
     lvlGrid.textContent = '';
